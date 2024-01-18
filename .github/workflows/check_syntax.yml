@@ -35,4 +35,7 @@ jobs:
       run: |
         flake8
 
+      run: |
+        flake8
+
 
