@@ -15,10 +15,10 @@ jobs:
 
     steps:
     - name: Set up Python
+      if: matrix.os == 'windows-latest' || (matrix.os == 'ubuntu-latest' && matrix.python-version != '3.10')
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-        exclude: ${{ matrix.python-version == '3.10' && matrix.os == 'ubuntu-latest' }}
 
     - name: Update pip
       run: |
@@ -40,3 +40,4 @@ jobs:
     - name: Run unittest
       run: |
         python -m unittest discover -v
+
